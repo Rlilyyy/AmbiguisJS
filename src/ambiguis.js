@@ -16,7 +16,7 @@
     return obj;
   };
 
-  let script = document.querySelector('#responsive');
+  let script = document.querySelector('#ambiguis');
   let initialDpr = 0;
   let maximumDpr = 0;
   let baseFontSize = 12;

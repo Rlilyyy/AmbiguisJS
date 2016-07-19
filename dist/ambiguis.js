@@ -44,7 +44,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     return obj;
   };
 
-  var script = document.querySelector('#responsive');
+  var script = document.querySelector('#ambiguis');
   var initialDpr = 0;
   var maximumDpr = 0;
   var baseFontSize = 12;
