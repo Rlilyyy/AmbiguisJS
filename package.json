@@ -29,7 +29,6 @@
     "gulp-minify": "0.0.12",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.4",
-    "pump": "^1.0.1",
     "webpack": "^1.13.1"
   }
 }
