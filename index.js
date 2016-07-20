@@ -119,9 +119,7 @@ var _ambiguis2 = _interopRequireDefault(_ambiguis);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = function (opts) {
-  return (0, _ambiguis2.default)(opts);
-};
+module.exports = _ambiguis2.default;
 
 },{"./ambiguis.js":1}]},{},[1,2])
 
