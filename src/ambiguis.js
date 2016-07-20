@@ -1,4 +1,4 @@
-(function(window) {
+export default function(opts) {
   const isAndroid = function() {
     let userAgent = navigator.userAgent;
     let reg = /Android|Adr/;
@@ -21,12 +21,12 @@
   let maximumDpr = 0;
   let baseFontSize = 12;
 
-  if (!!script && script.nodeType === 1 && script.nodeName === 'SCRIPT') {
-    let initial = parseFloat(script.dataset.initialDpr);
-    let maximum = parseFloat(script.dataset.maximumDpr);
-    let fontSize = parseFloat(script.dataset.fontSize);
-
+  if (isObject(opts)) {
+    let initial = parseFloat(opts.initialDpr);
+    let maximum = parseFloat(opts.maximumDpr);
+    let fontSize = parseFloat(opts.fontSize);
     initialDpr = initial ? initial : 0;
+
     maximumDpr = maximum ? maximum : 0;
     baseFontSize = fontSize ? fontSize : baseFontSize;
   }
@@ -74,4 +74,4 @@
       flag = 0;
     }, 100);
   }, false);
-})(window);
+};
