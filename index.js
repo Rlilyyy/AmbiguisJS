@@ -1,1 +1,1 @@
-module.exports = require('./dist/ambiguis.js');
+module.exports = require('./dist/ambiguis.min.js');
