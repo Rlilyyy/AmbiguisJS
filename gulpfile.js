@@ -3,10 +3,6 @@ var babel = require('gulp-babel');
 var minify = require('gulp-minify');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('default', function() {
   return gulp.src('src/ambiguis.js')
