@@ -1,27 +1,60 @@
 # AmbiguisJS
 Simply configure the mobile terminal responsive page
 
+Thanks @amfe: [lib-flexible](https://github.com/amfe/lib-flexible)
+
 ## Build
+
 Install modules
 ```bash
 $ npm install
 ```
-ES6 to ES5
+Transform ES6 to ES5
 ```bash
 $ gulp default
 ```
-minify and uglify
+Minify and Uglify
 ```bash
 $ gulp compress
 ```
 
 ## Usage
-Import `<script></script>` to your page.`./src/ambiguis.js` just only support es2015, `./dist/*.js` support es5.
-```JavaScript
-<script src="./src/ambiguis.js" data-initial-dpr=1 data-font-size=16 data-maximum-dpr=3 id="ambiguis"></script>
+
+### Use `<scipt></script>`
+```javascript
+<script src="./dist/ambiguis.js"></script>
+
+<script type="text/javascript">
+  ambiguis({
+    initialDpr: 1,
+    maximumDpr: 3,
+    fontSize: 16
+  })
+</script>
 ```
-### properties
-If you want to set these properties, you should set `id='#ambiguis'`
-* data-initial-dpr=number: Dpr will be set to `number`
-* data-font-size=number: Body's default font-size will be set to `number * dpr`
-* data-maximum-dpr=number: The largest dpr will be set to `number`
+
+### Use `webpack`
+```bash
+$ npm install ambiguis --save
+```
+
+```javascript
+require('ambiguis')({
+  initialDpr: 1,
+  maximumDpr: 3,
+  fontSize: 16
+});
+```
+
+### Properties
+ambiguis({
+  [initialDpr],
+  [maximumDpr],
+  [fontSize]
+})
+
+* initialDpr——the dpr will be set to the number you want
+* maximumDpr——the dpr will never largest than the number you want
+* fontSize——the body's default `font-size` will be set to the number you want
+
+There is a global variable `ele` provides the basic information of the current page
