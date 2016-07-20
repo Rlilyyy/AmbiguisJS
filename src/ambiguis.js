@@ -1,4 +1,4 @@
-export default function(opts) {
+function ambiguis(opts) {
   const isAndroid = function() {
     let userAgent = navigator.userAgent;
     let reg = /Android|Adr/;
@@ -75,3 +75,5 @@ export default function(opts) {
     }, 100);
   }, false);
 };
+
+module.exports = ambiguis;

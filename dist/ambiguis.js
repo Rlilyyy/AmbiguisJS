@@ -2,7 +2,7 @@
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-(function (window) {
+function ambiguis(opts) {
   var _this = this;
 
   var isAndroid = function isAndroid() {
@@ -49,12 +49,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   var maximumDpr = 0;
   var baseFontSize = 12;
 
-  if (!!script && script.nodeType === 1 && script.nodeName === 'SCRIPT') {
-    var initial = parseFloat(script.dataset.initialDpr);
-    var maximum = parseFloat(script.dataset.maximumDpr);
-    var fontSize = parseFloat(script.dataset.fontSize);
-
+  if (isObject(opts)) {
+    var initial = parseFloat(opts.initialDpr);
+    var maximum = parseFloat(opts.maximumDpr);
+    var fontSize = parseFloat(opts.fontSize);
     initialDpr = initial ? initial : 0;
+
     maximumDpr = maximum ? maximum : 0;
     baseFontSize = fontSize ? fontSize : baseFontSize;
   }
@@ -101,4 +101,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       flag = 0;
     }, 100);
   }, false);
-})(window);
+};
+
+module.exports = ambiguis;

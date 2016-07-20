@@ -1,6 +1,6 @@
 {
   "name": "ambiguisjs",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "reponsive tool",
   "main": "ambiguis.js",
   "scripts": {
