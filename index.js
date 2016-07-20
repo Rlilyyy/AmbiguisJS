@@ -119,11 +119,6 @@ var _ambiguis2 = _interopRequireDefault(_ambiguis);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _ambiguis2.default)({
-  initialDpr: 0,
-  maximumDpr: 3,
-  fontSize: 16
-});
 module.exports = function (opts) {
   return (0, _ambiguis2.default)(opts);
 };
