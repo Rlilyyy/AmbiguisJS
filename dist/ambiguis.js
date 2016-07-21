@@ -105,7 +105,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   };
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = ambiguis;
+    module.exports = exports = ambiguis;
   } else {
     window.ambiguis = ambiguis;
   }

@@ -58,3 +58,6 @@ ambiguis({
 * fontSize——the body's default `font-size` will be set to the number you want
 
 There is a global variable `ele` provides the basic information of the current page
+
+## License
+This content is released under the [MIT](This content is released under the MIT License.) License.

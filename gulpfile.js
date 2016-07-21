@@ -8,6 +8,7 @@ gulp.task('default', function() {
   return gulp.src('src/ambiguis.js')
     .pipe(babel({
       presets: ['es2015'],
+      // compact: true
     }))
     .pipe(gulp.dest('dist'));
 });
