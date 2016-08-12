@@ -48,16 +48,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     var script = document.querySelector('#ambiguis');
     var initialDpr = 0;
     var maximumDpr = 0;
+    var maxWidth = 9999999;
     var baseFontSize = 12;
 
     if (isObject(opts)) {
-      var initial = parseFloat(opts.initialDpr);
-      var maximum = parseFloat(opts.maximumDpr);
-      var fontSize = parseFloat(opts.fontSize);
-      initialDpr = initial ? initial : 0;
-
-      maximumDpr = maximum ? maximum : 0;
-      baseFontSize = fontSize ? fontSize : baseFontSize;
+      initialDpr = parseFloat(opts.initialDpr) || 0;
+      maximumDpr = parseFloat(opts.maximumDpr) || 0;
+      baseFontSize = parseFloat(opts.fontSize) || baseFontSize;
+      maxWidth = parseFloat(opts.maxWidth) || maxWidth;
     }
 
     var htmlFontChange = function htmlFontChange() {
@@ -66,7 +64,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       var scale = 1 / dpr;
       var bodyFontSize = baseFontSize * dpr;
 
-      window['ele'] = isObject(window['ele']) ? copyObject(window['ele'], { dpr: dpr, scale: scale, bodyFontSize: bodyFontSize, baseFontSize: baseFontSize }) : { dpr: dpr, scale: scale, bodyFontSize: bodyFontSize, baseFontSize: baseFontSize };
+      window['ele'] = isObject(window['ele']) ? copyObject(window['ele'], { dpr: dpr, scale: scale, bodyFontSize: bodyFontSize, baseFontSize: baseFontSize, maxWidth: maxWidth }) : { dpr: dpr, scale: scale, bodyFontSize: bodyFontSize, baseFontSize: baseFontSize, maxWidth: maxWidth };
 
       // 若 head 中已存在 viewport，则在此基础上修改，反之新建
       if (!meta) {
@@ -77,7 +75,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       meta.setAttribute('name', 'viewport');
       meta.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
 
-      var fontSize = window.innerWidth / 10;
+      var fontSize = window.innerWidth > maxWidth * dpr ? maxWidth * dpr / 10 : window.innerWidth / 10;
 
       // 设置 html 的 dpr（仅仅是一个标记）
       document.documentElement.dataset.dpr = dpr;

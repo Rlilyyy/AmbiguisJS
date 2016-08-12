@@ -28,7 +28,8 @@ $ gulp compress
   ambiguis({
     initialDpr: 1,
     maximumDpr: 3,
-    fontSize: 16
+    fontSize: 16,
+    maxWidth: 517
   })
 </script>
 ```
@@ -42,7 +43,8 @@ $ npm install ambiguis --save
 require('ambiguis')({
   initialDpr: 1,
   maximumDpr: 3,
-  fontSize: 16
+  fontSize: 16,
+  maxWidth: 517
 });
 ```
 
@@ -50,12 +52,14 @@ require('ambiguis')({
 ambiguis({
   [initialDpr],
   [maximumDpr],
-  [fontSize]
+  [fontSize],
+  [maxWidth]
 })
 
-* initialDpr——the dpr will be set to the number you want
-* maximumDpr——the dpr will never largest than the number you want
-* fontSize——the body's default `font-size` will be set to the number you want
+* initialDpr——The dpr will be set to the number you want.
+* maximumDpr——The dpr will never largest than the number you want.
+* fontSize——The body's default `font-size` will be set to the number you want.(Default: 12)
+* maxWidth——When the `window.innerWidth` larger than this number, we use `maxWidth` instead of `window.innerWidth`.So the root font size will be limited.
 
 There is a global variable `ele` provides the basic information of the current page
 

@@ -20,16 +20,14 @@
     let script = document.querySelector('#ambiguis');
     let initialDpr = 0;
     let maximumDpr = 0;
+    let maxWidth = 9999999;
     let baseFontSize = 12;
 
     if (isObject(opts)) {
-      let initial = parseFloat(opts.initialDpr);
-      let maximum = parseFloat(opts.maximumDpr);
-      let fontSize = parseFloat(opts.fontSize);
-      initialDpr = initial ? initial : 0;
-
-      maximumDpr = maximum ? maximum : 0;
-      baseFontSize = fontSize ? fontSize : baseFontSize;
+      initialDpr = parseFloat(opts.initialDpr) || 0;
+      maximumDpr = parseFloat(opts.maximumDpr) || 0;
+      baseFontSize = parseFloat(opts.fontSize) || baseFontSize;
+      maxWidth = parseFloat(opts.maxWidth) || maxWidth;
     }
 
 
@@ -39,7 +37,7 @@
       let scale = 1 / dpr;
       let bodyFontSize = baseFontSize * dpr;
 
-      window['ele'] = isObject(window['ele']) ? copyObject(window['ele'], {dpr, scale, bodyFontSize, baseFontSize}) : {dpr, scale, bodyFontSize, baseFontSize};
+      window['ele'] = isObject(window['ele']) ? copyObject(window['ele'], {dpr, scale, bodyFontSize, baseFontSize, maxWidth}) : {dpr, scale, bodyFontSize, baseFontSize, maxWidth};
 
       // 若 head 中已存在 viewport，则在此基础上修改，反之新建
       if (!meta) {
@@ -50,7 +48,7 @@
       meta.setAttribute('name', 'viewport');
       meta.setAttribute('content', `initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no`);
 
-      let fontSize = window.innerWidth / 10;
+      let fontSize = window.innerWidth > maxWidth * dpr ? maxWidth * dpr / 10 : window.innerWidth / 10;
 
       // 设置 html 的 dpr（仅仅是一个标记）
       document.documentElement.dataset.dpr = dpr;
