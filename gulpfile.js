@@ -3,13 +3,16 @@ var babel = require('gulp-babel');
 var minify = require('gulp-minify');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('default', function() {
   return gulp.src('src/ambiguis.js')
+    .pipe(sourcemaps.init())
     .pipe(babel({
       presets: ['es2015'],
       // compact: true
     }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist'));
 });
 

@@ -1,27 +1,28 @@
 (function(window) {
+
+  const isAndroid = function() {
+    let userAgent = navigator.userAgent;
+    let reg = /Android|Adr/;
+    return reg.test(userAgent);
+  };
+
+  const isObject = function(obj) {
+    return typeof obj === 'object' && obj !== null;
+  };
+
+  const copyObject = function(obj, target) {
+    for(let key of Object.keys(target)) {
+      obj[key] = target[key];
+    }
+    return obj;
+  };
+
+  let initialDpr = 0;
+  let maximumDpr = 0;
+  let maxWidth = 9999999;
+  let baseFontSize = 12;
+
   function ambiguis(opts) {
-    const isAndroid = function() {
-      let userAgent = navigator.userAgent;
-      let reg = /Android|Adr/;
-      return reg.test(userAgent);
-    };
-
-    const isObject = function(obj) {
-      return typeof obj === 'object' && obj !== null;
-    };
-
-    const copyObject = function(obj, target) {
-      for(let key of Object.keys(target)) {
-        obj[key] = target[key];
-      }
-      return obj;
-    };
-
-    let script = document.querySelector('#ambiguis');
-    let initialDpr = 0;
-    let maximumDpr = 0;
-    let maxWidth = 9999999;
-    let baseFontSize = 12;
 
     if (isObject(opts)) {
       initialDpr = parseFloat(opts.initialDpr) || 0;
@@ -37,7 +38,7 @@
       let scale = 1 / dpr;
       let bodyFontSize = baseFontSize * dpr;
 
-      window['ele'] = isObject(window['ele']) ? copyObject(window['ele'], {dpr, scale, bodyFontSize, baseFontSize, maxWidth}) : {dpr, scale, bodyFontSize, baseFontSize, maxWidth};
+      window['ele'] = isObject(window['ele']) ? copyObject(window['ele'], {dpr, scale, baseFontSize, maxWidth}) : {dpr, scale, baseFontSize, maxWidth};
 
       // 若 head 中已存在 viewport，则在此基础上修改，反之新建
       if (!meta) {
@@ -58,20 +59,18 @@
       document.body.style.fontSize = `${bodyFontSize}px`;
     };
 
-    window.addEventListener('load', () => {
+
+    document.addEventListener('DOMContentLoaded', () => {
       htmlFontChange.call(this);
     });
 
     let flag = 0;
     window.addEventListener('resize', () => {
       // 减少 reflow 次数
-      if(flag) {
-        clearTimeout(flag);
-      }
+      clearTimeout(flag);
       flag = setTimeout(() => {
         htmlFontChange.call(this);
-        flag = 0;
-      }, 100);
+      }, 300);
     }, false);
   };
 

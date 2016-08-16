@@ -28,6 +28,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-minify": "0.0.14",
     "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "webpack": "^1.13.1"
   }
