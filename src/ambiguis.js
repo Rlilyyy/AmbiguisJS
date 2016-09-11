@@ -11,7 +11,7 @@
   };
 
   const copyObject = function(obj, target) {
-    for(let key of Object.keys(target)) {
+    for(let key in target) {
       obj[key] = target[key];
     }
     return obj;
